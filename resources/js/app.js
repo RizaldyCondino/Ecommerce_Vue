@@ -7,13 +7,14 @@ import 'flowbite';
 import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { createApp, h } from 'vue';
-import { ZiggyVue } from '../../vendor/tightenco/ziggy';
+
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 
+import { ZiggyVue } from 'ziggy-js';
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 
@@ -28,7 +29,8 @@ createInertiaApp({
     setup({ el, App, props, plugin }) {
         return createApp({ render: () => h(App, props) })
             .use(plugin)
-            .use(ZiggyVue)
+            .use(ZiggyVue, Ziggy)
+
             .use(ElementPlus)
             .use(VueSweetalert2)
             .mount(el);
